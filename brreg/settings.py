@@ -13,7 +13,8 @@ SECRET_KEY = 'k^f!7ho9lr6(&_pn00ilr@+fe&s)06+#s2p)*an3jsc1cb%6+s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'best-realty.herokuapp.com']
+
 
 
 # Application definition
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -66,8 +68,11 @@ WSGI_APPLICATION = 'brreg.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'brregdb',
+        'USER': 'postgres',
+        'PASSWORD': 'earmuffs9',
+        'HOST': 'localhost'
     }
 }
 
@@ -115,3 +120,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'brreg/static')
 ]
+
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
