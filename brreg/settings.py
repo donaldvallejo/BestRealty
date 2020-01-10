@@ -13,7 +13,7 @@ SECRET_KEY = 'k^f!7ho9lr6(&_pn00ilr@+fe&s)06+#s2p)*an3jsc1cb%6+s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'best-realty.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'best-realty.herokuapp.com', '127.0.0.1']
 
 
 

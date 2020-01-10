@@ -1,0 +1,151 @@
+(venv) ➜  BestRealty git:(master) git push heroku master
+Enumerating objects: 1530, done.
+Counting objects: 100% (1530/1530), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (1337/1337), done.
+Writing objects: 100% (1530/1530), 15.88 MiB | 170.00 KiB/s, done.
+Total 1530 (delta 453), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Python app detected
+remote: -----> Installing python-3.6.10
+remote: -----> Installing pip
+remote: -----> Installing SQLite3
+remote: Sqlite3 successfully installed.
+remote: -----> Installing requirements with pip
+remote:        Collecting django==2.2.7 (from -r /tmp/build_e6e6bca8f559543993460f939bf5c8ff/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/a0/36/463632a2e9161a7e713488d719a280e8cb0c7e3a66ed32a32e801891caae/Django-2.2.7-py3-none-any.whl (7.5MB)
+remote:        Collecting gunicorn (from -r /tmp/build_e6e6bca8f559543993460f939bf5c8ff/requirements.txt (line 2))
+remote:          Downloading https://files.pythonhosted.org/packages/69/ca/926f7cd3a2014b16870086b2d0fdc84a9e49473c68a8dff8b57f7c156f43/gunicorn-20.0.4-py2.py3-none-any.whl (77kB)
+remote:        Collecting sqlparse (from django==2.2.7->-r /tmp/build_e6e6bca8f559543993460f939bf5c8ff/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/ef/53/900f7d2a54557c6a37886585a91336520e5539e3ae2423ff1102daf4f3a7/sqlparse-0.3.0-py2.py3-none-any.whl
+remote:        Collecting pytz (from django==2.2.7->-r /tmp/build_e6e6bca8f559543993460f939bf5c8ff/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl (509kB)
+remote:        Installing collected packages: sqlparse, pytz, django, gunicorn
+remote:        Successfully installed django-2.2.7 gunicorn-20.0.4 pytz-2019.3 sqlparse-0.3.0
+remote: 
+remote: -----> $ python manage.py collectstatic --noinput
+remote:        Traceback (most recent call last):
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 20, in <module>
+remote:            import psycopg2 as Database
+remote:        ModuleNotFoundError: No module named 'psycopg2'
+remote:        During handling of the above exception, another exception occurred:
+remote:        Traceback (most recent call last):
+remote:          File "manage.py", line 22, in <module>
+remote:            execute_from_command_line(sys.argv)
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/core/management/__init__.py", line 381, in execute_from_command_line
+remote:            utility.execute()
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/core/management/__init__.py", line 357, in execute
+remote:            django.setup()
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+remote:            apps.populate(settings.INSTALLED_APPS)
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+remote:            app_config.import_models()
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+remote:            self.models_module = import_module(models_module_name)
+remote:          File "/app/.heroku/python/lib/python3.6/importlib/__init__.py", line 126, in import_module
+remote:            return _bootstrap._gcd_import(name[level:], package, level)
+remote:          File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+remote:          File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+remote:          File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+remote:          File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+remote:          File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+remote:          File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+remote:          File "/tmp/build_e6e6bca8f559543993460f939bf5c8ff/listings/models.py", line 3, in <module>
+remote:            from realtors.models import Realtor
+remote:          File "/tmp/build_e6e6bca8f559543993460f939bf5c8ff/realtors/models.py", line 4, in <module>
+remote:            class Realtor(models.Model):
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/models/base.py", line 117, in __new__
+remote:            new_class.add_to_class('_meta', Options(meta, app_label))
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/models/base.py", line 321, in add_to_class
+remote:            value.contribute_to_class(cls, name)
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/models/options.py", line 204, in contribute_to_class
+remote:            self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+remote:            return getattr(connections[DEFAULT_DB_ALIAS], item)
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/utils.py", line 201, in __getitem__
+remote:            backend = load_backend(db['ENGINE'])
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/utils.py", line 110, in load_backend
+remote:            return import_module('%s.base' % backend_name)
+remote:          File "/app/.heroku/python/lib/python3.6/importlib/__init__.py", line 126, in import_module
+remote:            return _bootstrap._gcd_import(name[level:], package, level)
+remote:          File "/app/.heroku/python/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 24, in <module>
+remote:            raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+remote:        django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+remote: 
+remote:  !     Error while running '$ python manage.py collectstatic --noinput'.
+remote:        See traceback above for details.
+remote: 
+remote:        You may need to update application code to resolve this error.
+remote:        Or, you can disable collectstatic for this application:
+remote: 
+remote:           $ heroku config:set DISABLE_COLLECTSTATIC=1
+remote: 
+remote:        https://devcenter.heroku.com/articles/django-assets
+remote:  !     Push rejected, failed to compile Python app.
+remote: 
+remote:  !     Push failed
+remote: Verifying deploy...
+remote: 
+remote: !	Push rejected to best-realty.
+remote: 
+To https://git.heroku.com/best-realty.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/best-realty.git'
+(venv) ➜  BestRealty git:(master) git subtree push --prefix best-realty heroku master
+
+'best-realty' does not exist; use 'git subtree add'
+(venv) ➜  BestRealty git:(master) git subtree add --prefix best-realty heroku master
+
+git fetch heroku master
+fatal: Couldn't find remote ref master
+(venv) ➜  BestRealty git:(master) heroku logs
+2020-01-10T06:36:48.642478+00:00 app[api]: Release v1 created by user donny.vallejo@students.makeschool.com
+2020-01-10T06:36:48.642478+00:00 app[api]: Initial release by user donny.vallejo@students.makeschool.com
+2020-01-10T06:36:48.919225+00:00 app[api]: Enable Logplex by user donny.vallejo@students.makeschool.com
+2020-01-10T06:36:48.919225+00:00 app[api]: Release v2 created by user donny.vallejo@students.makeschool.com
+2020-01-10T06:41:52.000000+00:00 app[api]: Build started by user donny.vallejo@students.makeschool.com
+2020-01-10T06:42:14.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/0c3864e3-a215-4e82-82c6-1bde8bc4b62c/activity/builds/2a3b3175-e8f0-4164-b054-f2a3eeeb6c03
+(venv) ➜  BestRealty git:(master) heroku config:set DISABLE_COLLECTSTATIC=1      
+Setting DISABLE_COLLECTSTATIC and restarting ⬢ best-realty... done, v3
+DISABLE_COLLECTSTATIC: 1
+(venv) ➜  BestRealty git:(master) git push heroku master                             
+Enumerating objects: 1530, done.
+Counting objects: 100% (1530/1530), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (1337/1337), done.
+Writing objects: 100% (1530/1530), 15.88 MiB | 83.00 KiB/s, done.
+Total 1530 (delta 453), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Python app detected
+remote: -----> Installing python-3.6.10
+remote: -----> Installing pip
+remote: -----> Installing SQLite3
+remote: Sqlite3 successfully installed.
+remote: -----> Installing requirements with pip
+remote:        Collecting django==2.2.7 (from -r /tmp/build_553fbdd7d251cf07bae36de16634b29f/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/a0/36/463632a2e9161a7e713488d719a280e8cb0c7e3a66ed32a32e801891caae/Django-2.2.7-py3-none-any.whl (7.5MB)
+remote:        Collecting gunicorn (from -r /tmp/build_553fbdd7d251cf07bae36de16634b29f/requirements.txt (line 2))
+remote:          Downloading https://files.pythonhosted.org/packages/69/ca/926f7cd3a2014b16870086b2d0fdc84a9e49473c68a8dff8b57f7c156f43/gunicorn-20.0.4-py2.py3-none-any.whl (77kB)
+remote:        Collecting pytz (from django==2.2.7->-r /tmp/build_553fbdd7d251cf07bae36de16634b29f/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl (509kB)
+remote:        Collecting sqlparse (from django==2.2.7->-r /tmp/build_553fbdd7d251cf07bae36de16634b29f/requirements.txt (line 1))
+remote:          Downloading https://files.pythonhosted.org/packages/ef/53/900f7d2a54557c6a37886585a91336520e5539e3ae2423ff1102daf4f3a7/sqlparse-0.3.0-py2.py3-none-any.whl
+remote:        Installing collected packages: pytz, sqlparse, django, gunicorn
+remote:        Successfully installed django-2.2.7 gunicorn-20.0.4 pytz-2019.3 sqlparse-0.3.0
+remote: 
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 65.2M
+remote: -----> Launching...
+remote:        Released v6
+remote:        https://best-realty.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/best-realty.git
+ * [new branch]      master -> master

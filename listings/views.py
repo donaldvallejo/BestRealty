@@ -12,7 +12,7 @@ from requests.auth import HTTPBasicAuth
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
-    paginator = Paginator(listings, 2)
+    paginator = Paginator(listings, 6)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
@@ -78,11 +78,11 @@ def search(request):
     return render(request, 'listings/search.html', context)
 
 
-def about(request):
-    realtors = Realtos.objects.order_by('-hire_date')
-    mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
-    context = {
-        'realtors': realtors,
-        'mvp_realtors': mvp_realtors
-    }
-    return render(request, 'pages/about.html', context)
+# def about(request):
+#     realtors = Realtos.objects.order_by('-hire_date')
+#     mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+#     context = {
+#         'realtors': realtors,
+#         'mvp_realtors': mvp_realtors
+#     }
+#     return render(request, 'pages/about.html', context)
